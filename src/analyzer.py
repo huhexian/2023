@@ -1,8 +1,10 @@
 import os
 
 import jieba.analyse
+import pytz
+from dateutil.parser import parse
 from loguru import logger
-
+from lunardate import LunarDate
 from snownlp import SnowNLP
 
 
@@ -54,3 +56,52 @@ def analyze_sentiment(text):
     s = SnowNLP(text)
     return round(s.sentiments * 100)
 
+
+def calculate_weight(time_str):
+    # 使用 dateutil.parser.parse() 函数解析日期和时间
+    dt = parse(time_str)
+    # 转换为中国时区
+    dt = dt.astimezone(pytz.timezone('Asia/Shanghai'))
+    # 初始化权重
+    weight = 0
+    date_str = ""
+
+    # 因素1: 中国传统节假日
+    # 首先将日期转换为农历
+    lunar_date = LunarDate.fromSolarDate(dt.year, dt.month, dt.day)
+    # 然后检查是否是节假日
+    holidays = {
+        (1, 1): '春节',
+        (1, 15): '元宵节',
+        (5, 5): '端午节',
+        (7, 7): '七夕节',
+        (7, 15): '中元节',
+        (8, 15): '中秋节',
+        (9, 9): '重阳节'
+    }
+    if (lunar_date.month, lunar_date.day) in holidays:
+        weight += 5
+        date_str = holidays[(lunar_date.month, lunar_date.day)]
+    if dt.month == 4 and dt.day == 4:
+        weight += 5
+        date_str = "清明节"
+    if dt.month == 12 and 21 <= dt.day <= 23:
+        weight += 5
+        date_str = "冬至节"
+    if not date_str:
+        date_str = f"{dt.month}月{dt.day}日"
+
+    # 因素2: 22点到24点，0点到7点
+    if 22 <= dt.hour or dt.hour < 7:
+        weight += 5
+    # 因素3: 7点-12点
+    elif 7 <= dt.hour < 12:
+        weight += 4
+    # 因素4: 12 点-18点
+    elif 12 <= dt.hour < 18:
+        weight += 3
+    # 因素5: 18点到22点
+    elif 18 <= dt.hour < 22:
+        weight += 2
+
+    return weight, date_str

@@ -49,8 +49,15 @@ class Blog:
 
 class Post:
     def __init__(self, entry):
+        # 日期权重
+        self._weight = None
+        # 日子
+        self._date = None
+        # 情感分
         self._score = None
+        # 关键字
         self._keys = None
+        # 分类
         self._category = None
         self.entry = entry
 
@@ -121,6 +128,22 @@ class Post:
             self._category = "生活"
         else:
             self._category = "技术"
+
+    @property
+    def date(self):
+        return self._date
+
+    @date.setter
+    def date(self, value):
+        self._date = value
+
+    @property
+    def weight(self):
+        return self._weight
+
+    @weight.setter
+    def weight(self, value):
+        self._weight = value
 
     def __str__(self):
         return f"Post(title={self.title[:20]}..., time={self.time}, link={self.link}, word_count={self.word_count})"
