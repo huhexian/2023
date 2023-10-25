@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EndOfYear</title>
+    <link rel="stylesheet" href="css/normalize.css">
+    <link rel="stylesheet" href="css/animate.min.css"/>
+    <link rel="stylesheet" href="css/main.css"/>
+</head>
+<body>
+<div class="container active" id="tab1"></div>
+<div class="container" id="tab2">
+    <div class="tab2-box">
+        <p>亲爱的救赎之路</p>
+        <p>今天是我们相识的</p>
+        <p>第 <small>5</small> 年 <small>100</small> 天</p>
+    </div>
+
+</div>
+<div class="container" id="tab3">
+    <div class="tab3-box">
+        <p>这一年你写下了</p>
+        <p><small>100</small> 篇博文</p>
+        <p><small>10000</small> 个文字</p>
+    </div>
+</div>
+<div class="container" id="tab4">
+    <div class="tab4-box">
+        <p>五月五日那天，你写下了</p>
+        <p>行万里路、读万卷书</p>
+        <p>行万里路行万里路行万里路行万里路行万里路行万里路行万里路行万里路行万里路行万里路<small>……</small></p>
+    </div>
+</div>
+<div class="container" id="tab5">
+    <div class="tab5-box">
+        <p>聪颖</p>
+        <p>决断</p>
+        <p>行动力</p>
+        <p>感知力</p>
+        <p>亲和力</p>
+        <p>这些都是<small>你</small>的</p>
+        <p>专属<small>关键词</small></p>
+    </div>
+</div>
+<div class="container" id="tab6">
+    <div class="tab6-box">
+        <p>热爱生活的你</p>
+        <p>一定要继续砥砺前行!</p>
+    </div>
+</div>
+<div class="container" id="tab7">
+    <div class="tab7-box">
+
+    </div>
+</div>
+
+<script>
+    console.log("Window inner size: ", window.innerWidth, "x", window.innerHeight);
+    console.log("Window outer size: ", window.outerWidth, "x", window.outerHeight);
+    console.log("Screen size: ", screen.width, "x", screen.height);
+    console.log("Screen available size: ", screen.availWidth, "x", screen.availHeight);
+    var carousel = {
+        currentIndex: 0,
+        tabs: [],
+
+        init: function () {
+            this.tabs = document.getElementsByClassName('container');
+
+            for (let i = 0; i < this.tabs.length; i++) {
+                this.tabs[i].addEventListener('click', () => {
+                    this.next();
+                });
+            }
+        },
+
+        next: function () {
+            this.tabs[this.currentIndex].classList.remove('active');
+            this.currentIndex = (this.currentIndex + 1) % this.tabs.length;
+            this.tabs[this.currentIndex].classList.add('active');
+        }
+    };
+
+    window.onload = function () {
+        carousel.init();
+    };
+</script>
+
+</body>
+</html>
