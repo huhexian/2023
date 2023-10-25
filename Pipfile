@@ -9,6 +9,8 @@ loguru = "*"
 jieba = "*"
 textblob = "*"
 snownlp = "*"
+pytz = "*"
+flask = "*"
 
 [dev-packages]
 
