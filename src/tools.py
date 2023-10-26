@@ -62,11 +62,7 @@ def get_domain_life(url):
         # 计算天数差
         delta = now - your_date
 
-        # 计算年数和剩余的天数
-        years = delta.days // 365
-        days = delta.days % 365
-
-        return f"{years}年{days}天"
+        return delta.days
 
     except requests.exceptions.HTTPError as err:
         logger.error(f"HTTP 错误: {err}")
@@ -82,5 +78,3 @@ def get_domain_life(url):
 
 def remove_html_tags(text):
     return BeautifulSoup(text, "html.parser").get_text()
-
-

@@ -46,10 +46,10 @@ def classify_and_extract_keywords(text, topK, stopwords,
     for keyword in keywords:
         if keyword.lower() in tech_terms:
             logger.debug(f"文章：{text[:10]}……,类别：技术,关键词：{topK} - {keywords}")
-            return False, keywords
+            return 1, keywords
 
     logger.debug(f"文章：{text[:10]}……,类别：生活,关键词：{topK} - {keywords}")
-    return True, keywords
+    return 2, keywords
 
 
 def analyze_sentiment(text):

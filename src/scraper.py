@@ -124,10 +124,7 @@ class Post:
 
     @category.setter
     def category(self, value):
-        if value:
-            self._category = "生活"
-        else:
-            self._category = "技术"
+        self._category = value
 
     @property
     def date(self):
