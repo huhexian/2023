@@ -3,44 +3,43 @@
     src: url('../font/LXGWWenKaiMonoGB-Bold.ttf') format('truetype');
 }
 
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 320px) {
+    html {
+        font-size: 15px;
+    }
+
+    .container {
+        max-width: 55vh;
+        margin: 0 auto;
+    }
+
+}
+
+@media screen and (min-width: 320px) and (max-width: 480px) {
+    html {
+        font-size: 16px;
+    }
+
+    .container {
+        max-width: 55vh;
+        margin: 0 auto;
+    }
+}
+
+@media screen and (min-width: 480px) and (max-width: 768px) {
+    html {
+        font-size: 17px;
+    }
+
+    .container {
+        max-width: 55vh;
+        margin: 0 auto;
+    }
+}
+
+@media screen and (min-width: 768px) {
     html {
         font-size: 18px;
-    }
-
-    .container {
-        max-width: 55vh;
-        margin: 0 auto;
-    }
-
-}
-
-@media screen and (min-width: 768px) and (max-width: 900px) {
-    html {
-        font-size: 20px;
-    }
-
-    .container {
-        max-width: 55vh;
-        margin: 0 auto;
-    }
-}
-
-@media screen and (min-width: 900px) and (max-width: 1024px) {
-    html {
-        font-size: 22px;
-    }
-
-    .container {
-        max-width: 55vh;
-        margin: 0 auto;
-    }
-}
-
-@media screen and (min-width: 1024px) {
-
-    html {
-        font-size: 24px;
     }
 
     .container {
@@ -129,8 +128,7 @@ html {
     writing-mode: horizontal-tb;
     margin: 0 0;
     height: 30vh;
-    width: 12rem;
-    overflow: hidden;
+    width: 13rem;
     font-size: 1.25rem;
     line-height: 1.75rem;
 }

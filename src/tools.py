@@ -7,10 +7,14 @@ from loguru import logger
 
 
 def check_website_status(url):
+    """
+    检测网站是否可以正常访问，取决于 status == 200
+    :param url:网址
+    :return:True 可以访问，False 不可以。
+    """
     try:
         response = requests.get(url, timeout=5)  # Set timeout to 5 seconds
         if response.status_code == 200:
-            logger.debug(f"{url} 网站可访问")
             return True
         else:
             logger.error(f"{url} 网站无法访问,状态码:{response.status_code}")
@@ -30,6 +34,11 @@ def check_website_status(url):
 
 
 def get_domain(url):
+    """
+    获取 url 注册域名，二级域名 + 顶级域名
+    :param url:url 地址
+    :return:注册域名
+    """
     parsed_uri = urlparse(url)
     subdomain = parsed_uri.netloc.split('.')[-2]  # 获取二级域名部分
     top_domain = parsed_uri.netloc.split('.')[-1]  # 获取顶级域名部分
@@ -37,6 +46,11 @@ def get_domain(url):
 
 
 def get_domain_life(url):
+    """
+    域名注册天数
+    :param url:注册域名
+    :return:天数
+    """
     headers = {
         "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/58.0.3029.110 Safari/537.3"
     }
@@ -77,4 +91,9 @@ def get_domain_life(url):
 
 
 def remove_html_tags(text):
+    """
+    移除无用 html 标签
+    :param text:源文本
+    :return:文本
+    """
     return BeautifulSoup(text, "html.parser").get_text()

@@ -13,9 +13,14 @@
 <div class="container animate__animated animate__fadeIn animate__slow" id="tab2">
     <div class="tab2-box">
         <p class="animate__animated animate__fadeIn animate__delay-1s">亲爱的{{ data.blog_name }}</p>
+        {% if data.blog_life == 0 %}
+        <p class="animate__animated animate__fadeIn animate__delay-2s">旧事如梦，一年已过</p>
+        <p class="animate__animated animate__fadeIn animate__delay-2s">贰三年、感谢有你!</p>
+        {% else %}
         <p class="animate__animated animate__fadeIn animate__delay-2s">今天是我们相识的</p>
         <p class="animate__animated animate__fadeIn animate__delay-3s">第 <small>{{ data.blog_life_year }}</small> 年
             <small>{{ data.blog_life_day }}</small> 天</p>
+        {% endif %}
     </div>
 
 </div>

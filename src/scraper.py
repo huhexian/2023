@@ -46,6 +46,9 @@ class Blog:
     def post_lists(self):
         return self.posts
 
+    def __str__(self):
+        return f"Blog: {self.title}, Life:{self.life}, Count{self.article_count}. Word count:{self.article_word_count}"
+
 
 class Post:
     def __init__(self, entry):
@@ -143,4 +146,8 @@ class Post:
         self._weight = value
 
     def __str__(self):
-        return f"Post(title={self.title[:20]}..., time={self.time}, link={self.link}, word_count={self.word_count})"
+        return (f"Post title={self.title[:20]}..., "
+                f" content={self.content[:20]}..., "
+                f" time={self.time}, "
+                f" link={self.link}, "
+                f" word_count={self.word_count}")
