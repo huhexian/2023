@@ -28,7 +28,7 @@ def painting():
         # Github 静态
         # 数据需要生成，并写入静态文件
         html_data = render_template('painting.html', data=build_data(), web_status=0)
-        with open("static/painting/index.html", "w") as f:
+        with open("static/index.html", "w") as f:
             f.write(html_data)
 
         return 'OK'

@@ -18,39 +18,22 @@ jobs:
         with:
           python-version: 3.11
 
-      - name: 3. Install dependencies
+      - name: 3. Install
         run: |
           pip install --upgrade pip
           pip install -r requirements.txt
 
       - name: 4. Run
         run: |
-          python ./main.py &
-          sleep 7 # 等待应用程序启动
+          python ./main.py 
 
       - name: 5. Build
         run: |
-          wget -O localhost_content.txt http://localhost:7777
-          cat localhost_content.txt
+          wget http://localhost:7777
 
-      - name: 6. Check content
-        run: |
-          content=$(cat localhost_content.txt)
-          if [[ "$content" == "OK" ]]; then
-            echo "静态网站构建完成。"
-          else
-            echo "未知错误。"
-            exit 1
-          fi
-
-      - name: 7. Push static HTML
-        run: |
-          git checkout -b static-html
-          
-          git add .
-          
-          # 提交更改
-          git commit -m "Build static HTML"
-          
-          # 推送到远程仓库
-          git push origin static-html
+      - name: 6. Push static HTML
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./static
+          publish_branch: html

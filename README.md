@@ -2,7 +2,7 @@
 
 EndOfYear 点燃个人博客的年度辉煌！
 
-![EndOfYear](/home/sevenwate/PycharmProjects/endofyear/static/EndOfYear.jpg)
+![EndOfYear](static/EndOfYear.jpg)
 
 ## 流程
 
