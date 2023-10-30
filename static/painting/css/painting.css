@@ -75,11 +75,11 @@ html {
 
 
 #tab1 {
-    background-image: url('../img/page1.png');
+    background-image: url('../img/page1.jpg');
 }
 
 #tab2 {
-    background-image: url('../img/page2.png');
+    background-image: url('../img/page2.jpg');
 }
 
 .tab2-box {
@@ -96,7 +96,7 @@ html {
 }
 
 #tab3 {
-    background-image: url('../img/page3.png');
+    background-image: url('../img/page3.jpg');
 }
 
 .tab3-box {
@@ -113,7 +113,7 @@ html {
 }
 
 #tab4 {
-    background-image: url('../img/page4.png');
+    background-image: url('../img/page4.jpg');
 }
 
 .tab4-box {
@@ -135,7 +135,7 @@ html {
 
 
 #tab5 {
-    background-image: url('../img/page5.png');
+    background-image: url('../img/page5.jpg');
 }
 
 .tab5-box {
@@ -210,7 +210,7 @@ html {
 
 
 #tab6 {
-    background-image: url('../img/page6.png');
+    background-image: url('../img/page6.jpg');
 }
 
 #tab6 > .tab6-box {
@@ -222,6 +222,6 @@ html {
 }
 
 #tab7 {
-    background-image: url('../img/page7.png');
+    background-image: url('../img/page7.jpg');
 }
 

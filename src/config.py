@@ -91,3 +91,21 @@ class Config:
 
         with open(self.path, 'w') as configfile:
             self.config.write(configfile)
+
+    @property
+    def web_status(self):
+        try:
+            web_status = self.config.get('default', 'web', fallback=None)
+        except configparser.NoSectionError:
+            logger.error('未找到 web 配置项，请检查拼写')
+            return None
+
+        if web_status is None:
+            logger.error('web 配置值为空')
+            return True
+
+        if web_status == "True" or web_status == "true":
+            return True
+
+        if web_status == "False" or web_status == "false":
+            return False

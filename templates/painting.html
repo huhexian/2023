@@ -4,9 +4,15 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>EndOfYear</title>
+    {% if data.blog_life == 1 %}
     <link rel="stylesheet" href="{{ url_for('static', filename='painting/css/normalize.css') }}">
     <link rel="stylesheet" href="{{ url_for('static', filename='painting/css/animate.min.css') }}">
     <link rel="stylesheet" href="{{ url_for('static', filename='painting/css/painting.css') }}">
+    {% else %}
+    <link rel="stylesheet" href="css/normalize.css">
+    <link rel="stylesheet" href="css/animate.min.css">
+    <link rel="stylesheet" href="css/painting.css">
+    {% endif %}
 </head>
 <body>
 <div class="container active animate__animated animate__fadeIn animate__slow" id="tab1"></div>
