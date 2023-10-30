@@ -42,8 +42,11 @@ class Config:
             return None
 
         if not url:
-            logger.error('rss 配置值为空')
-            return None
+            logger.debug('rss 文件配置值为空，尝试读取环境变量')
+            url = os.environ.get('rss')
+            if url is None:
+                logger.error('rss 文件配置值为空，环境变量为空……')
+                return None
 
         # 如果网址不可访问，返回 None
         if not check_website_status(url):

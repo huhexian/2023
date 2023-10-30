@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>EndOfYear</title>
-    {% if data.blog_life == 1 %}
+    {% if web_status == 1 %}
     <link rel="stylesheet" href="{{ url_for('static', filename='painting/css/normalize.css') }}">
     <link rel="stylesheet" href="{{ url_for('static', filename='painting/css/animate.min.css') }}">
     <link rel="stylesheet" href="{{ url_for('static', filename='painting/css/painting.css') }}">
@@ -13,6 +13,7 @@
     <link rel="stylesheet" href="css/animate.min.css">
     <link rel="stylesheet" href="css/painting.css">
     {% endif %}
+    <script async src="https://umami.7wate.org/script.js" data-website-id="635fec50-bc6c-4ac2-909a-e2a7403438be"></script>
 </head>
 <body>
 <div class="container active animate__animated animate__fadeIn animate__slow" id="tab1"></div>
