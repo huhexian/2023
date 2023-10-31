@@ -3,6 +3,11 @@
     src: url('../font/LXGWWenKaiMonoGB-Bold.ttf') format('truetype');
 }
 
+@font-face {
+    font-family: 'dongzhu';
+    src: url('../font/dongzhu-Extralight.ttf') format('truetype');
+}
+
 @media screen and (max-width: 320px) {
     html {
         font-size: 15px;
@@ -76,6 +81,48 @@ html {
 
 #tab1 {
     background-image: url('../img/page1.jpg');
+    position: relative;
+}
+
+.popup {
+    position: absolute;
+    margin: 0 2px;
+    bottom: 0.5rem;
+    background: #fff;
+    padding: 1.5rem;
+    border: 1px solid #d1d1d1;
+}
+
+.popup > .notice > hr {
+    margin: 1rem 0;
+}
+
+.popup > .selection {
+    text-align: right;
+}
+
+.selection > button {
+    border: none;
+    padding: 0.75rem 1rem;
+    margin: 0.5rem 0 0 0.5rem;
+}
+
+.allow {
+    cursor: pointer;
+}
+
+.deny {
+    background-color: #059862;
+    cursor: pointer;
+    color: #fff;
+    padding: 0.5rem 0;
+    opacity: 0.8;
+}
+
+.deny:hover,
+.deny:focus {
+    opacity: 1;
+    cursor: pointer;
 }
 
 #tab2 {
@@ -223,5 +270,20 @@ html {
 
 #tab7 {
     background-image: url('../img/page7.jpg');
+}
+
+#tab7 > .tab7-box{
+    padding: 2rem 2rem;
+}
+
+.tab7-box > p {
+    font-family: 'dongzhu', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial,
+    'Noto Sans', sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol',
+    'Noto Color Emoji';
+    font-size: 2.75rem;
+    line-height: 3.5rem;
+    writing-mode: vertical-rl;
+    color: #FFFFFFD9;
+    margin: 0;
 }
 
