@@ -13,14 +13,14 @@ def check_website_status(url):
     :return:True 可以访问，False 不可以。
     """
     try:
-        response = requests.get(url, timeout=5)  # Set timeout to 5 seconds
+        response = requests.get(url, timeout=30)  # Set timeout to 5 seconds
         if response.status_code == 200:
             return True
         else:
             logger.error(f"{url} 网站无法访问,状态码:{response.status_code}")
             return False
     except requests.Timeout as e:
-        logger.error(f"{url} 请求超时,错误:{e}")
+        logger.error(f"{url} 请求超时 30 秒,错误:{e}")
         return False
     except requests.ConnectionError as e:
         logger.error(f"{url} 连接错误,错误:{e}")
@@ -57,7 +57,7 @@ def get_domain_life(url):
     domain_url = f"https://rdap.verisign.com/com/v1/domain/{url}"
 
     try:
-        response = requests.get(domain_url, headers=headers)
+        response = requests.get(domain_url, headers=headers, timeout=30)
         response.raise_for_status()  # Raises stored HTTPError, if one occurred.
 
         registration_date = response.json().get('events')[0].get('eventDate')
@@ -97,3 +97,29 @@ def remove_html_tags(text):
     :return:文本
     """
     return BeautifulSoup(text, "html.parser").get_text()
+
+
+def get_yiyan():
+    """
+    获取一言文学语句
+    :return:一言
+    """
+    try:
+        response = requests.get("https://v1.hitokoto.cn/?c=d&min_length=12&encode=text", timeout=30)  # Set timeout to 5 seconds
+        if response.status_code == 200:
+            return response.text
+        else:
+            logger.error(f"一言网站无法访问,状态码:{response.status_code}")
+            return False
+    except requests.Timeout as e:
+        logger.error(f"一言请求超时 30 秒,错误:{e}")
+        return False
+    except requests.ConnectionError as e:
+        logger.error(f"一言连接错误,错误:{e}")
+        return False
+    except requests.RequestException as e:
+        logger.error(f"一言网站无法访问,错误:{e}")
+        return False
+    except Exception as e:
+        logger.error(f"一言未知错误,错误:{e}")
+        return False
